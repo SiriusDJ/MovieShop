@@ -65,4 +65,7 @@ method(5, movieService)
 1. Establish the connection string, where you want the database to be created
 1. Install required libraries from NuGet
 1. DbContext -> Represents your database and DbSet -> represents table
+1. Create Custom DbContext class that inherits from DbContext base class
+1. Inject DbContextOptions from Program.cs with connection string into DbContext
+1. Create DbSet<Entity> property inside the Dbcontext
 1. 
