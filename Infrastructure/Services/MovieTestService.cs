@@ -9,23 +9,16 @@ using System.Threading.Tasks;
 
 namespace Infrastructure.Services
 {
-    public class MovieService : IMovieService
+    public class MovieTestService: IMovieService
     {
-        // call the movierepository class
-        // get the netity class data and map them into model class data
-
-        private readonly IMovieRepository _movieRepository;
-
-        public MovieService(IMovieRepository movieRepository)
-        {
-            _movieRepository = movieRepository;
-        }
-
         public List<MovieCardModel> GetTop30GrossingMovies()
         {
-            var movies = _movieRepository.GetTop30GrossingMovies();
+            var movieRepo = new MovieRepository();
+            var movies = movieRepo.GetTop30GrossingMovies().Take(6);
+
             var movieCards = new List<MovieCardModel>();
-            foreach(var movie in movies)
+
+            foreach (var movie in movies.Take(6))
             {
                 movieCards.Add(new MovieCardModel
                 {
@@ -35,7 +28,7 @@ namespace Infrastructure.Services
                 });
             }
 
-            return movieCards; 
+            return movieCards;
         }
 
     }

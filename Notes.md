@@ -36,3 +36,24 @@ Services classese/interfaces they deal with Model classes
 
 
 Every veiw before rendering, it will inherit view from the layout page
+Home/index -> MovieCard
+User/purchases => MovieCard
+user/Favorites -> MovieCard
+
+Partial View => MovieCardPartial and then u can reuse it across multiple views
+
+
+Design Pattern that enables you to write loosely coupled code
+
+tightly coupled code vs loosely coupled 
+
+easy to maintain/test/change the functionality without changin much of the code
+
+
+method(int x, IMovieService service);
+
+any class/type that implements that interface can be its input
+
+var movieService = new MovieService();
+
+method(5, movieService)
