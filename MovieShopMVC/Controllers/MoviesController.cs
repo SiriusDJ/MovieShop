@@ -2,7 +2,7 @@
 
 namespace MovieShopMVC.Controllers
 {
-    public class MovieController : Controller
+    public class MoviesController : Controller
     {
         public IActionResult Details(int id)
         {

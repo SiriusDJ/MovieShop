@@ -33,3 +33,6 @@ You create model classes based on the rquirement of the view
 
 Repositories class/interfaces they deal with Entity classes
 Services classese/interfaces they deal with Model classes
+
+
+Every veiw before rendering, it will inherit view from the layout page
