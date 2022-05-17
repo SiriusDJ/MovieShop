@@ -57,3 +57,12 @@ any class/type that implements that interface can be its input
 var movieService = new MovieService();
 
 method(5, movieService)
+
+
+### EF Core Code First Approach using Migrations
+
+1. Create an Entity that you need based on Table requirement
+1. Establish the connection string, where you want the database to be created
+1. Install required libraries from NuGet
+1. DbContext -> Represents your database and DbSet -> represents table
+1. 
