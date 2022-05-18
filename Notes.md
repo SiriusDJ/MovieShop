@@ -68,4 +68,10 @@ method(5, movieService)
 1. Create Custom DbContext class that inherits from DbContext base class
 1. Inject DbContextOptions from Program.cs with connection string into DbContext
 1. Create DbSet<Entity> property inside the Dbcontext
-1. 
+1. Add-migration
+1. Update-database
+1. Check the SQL Server if the database is in there
+1. Do not change the Database schema manually, always go from code and apply new migration
+1. Two ways to model our code first design
+	1. Data Annotations
+	1. Fluent API takes precedence

@@ -15,8 +15,9 @@ namespace Infrastructure.Data
 
         }
 
-
         public DbSet<Movie> Movies { get; set; }
+
+
     }
 
 }
