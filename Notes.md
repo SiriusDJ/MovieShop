@@ -74,4 +74,4 @@ method(5, movieService)
 1. Do not change the Database schema manually, always go from code and apply new migration
 1. Two ways to model our code first design
 	1. Data Annotations
-	1. Fluent API takes precedence
+	1. Fluent API (takes precedence)

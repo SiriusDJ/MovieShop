@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Infrastructure.Data
 {
@@ -16,7 +17,25 @@ namespace Infrastructure.Data
         }
 
         public DbSet<Movie> Movies { get; set; }
+        public DbSet<Genre> Genres { get; set; }
 
+        // to use Fluent API you need to override OnModelCreating 
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            // you can specify the rules for Entity
+
+            modelBuilder.Entity<Genre>(ConfigureGenre);
+        }
+
+        private void ConfigureGenre(EntityTypeBuilder<Genre> builder)
+        {
+            //specify the fluent API way rules for Genre Table
+            builder.ToTable("Genre");
+            builder.HasKey(x => x.Id);
+            builder.Property(x => x.Name).HasMaxLength(64).IsRequired();
+
+        }
 
     }
 
