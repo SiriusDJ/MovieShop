@@ -52,5 +52,21 @@ namespace ApplicationCore.Entities
         [MaxLength(4096)]
         public string? CreatedBy { get; set; }
 
+        // Navigation Property
+
+        public ICollection<Trailer> Trailers { get; set; }
+
+        public ICollection<MovieGenre> MoviesOfGenre { get; set; }
+
+        public ICollection<MovieCrew> MoviesOfCrew { get; set; }
+
+        public ICollection<MovieCast> MoviesOfCast { get; set; }
+        
+        public ICollection<Review> MoviesOfReview  { get; set; }
+
+        public ICollection<Purchase> MoviesOfPurchase{ get; set; }
+
+        public ICollection<Favorite> MoviesOfFavorite { get; set; }
+
     }
 }

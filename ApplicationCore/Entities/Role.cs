@@ -8,14 +8,15 @@ using System.Threading.Tasks;
 
 namespace ApplicationCore.Entities
 {
-    public class Genre
+    [Table("Role")]
+    public class Role
     {
-
         public int Id { get; set; }
 
-        [MaxLength(24)]
-        public string Name { get; set; } 
+        [MaxLength(20)]
+        public string Name { get; set; }  
+        
+        public ICollection<Role> RolesOfUser { get; set; }
 
-        public ICollection<MovieGenre> GenresOfMovie { get; set; }
     }
 }

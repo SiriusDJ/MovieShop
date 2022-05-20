@@ -8,14 +8,21 @@ using System.Threading.Tasks;
 
 namespace ApplicationCore.Entities
 {
-    public class Genre
+    public class Cast
     {
-
         public int Id { get; set; }
+        
+        public string Name { get; set; }
 
-        [MaxLength(24)]
-        public string Name { get; set; } 
+        
+        public string Gender { get; set; }
 
-        public ICollection<MovieGenre> GenresOfMovie { get; set; }
+        public string TmdbUrl { get; set; }
+
+
+        public string ProfilePath { get; set; }
+
+        public ICollection<MovieCast> CastsofMovie { get; set; }  
+
     }
 }

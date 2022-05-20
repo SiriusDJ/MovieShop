@@ -8,14 +8,20 @@ using System.Threading.Tasks;
 
 namespace ApplicationCore.Entities
 {
-    public class Genre
+    [Table("Trailer")]
+    public class Trailer
     {
-
         public int Id { get; set; }
+        public int MovieId { get; set; }
 
-        [MaxLength(24)]
-        public string Name { get; set; } 
+        [MaxLength(2084)]
+        public string TrailerUrl { get; set; }
 
-        public ICollection<MovieGenre> GenresOfMovie { get; set; }
+        [MaxLength(2084)]
+        public string Name { get; set; }
+
+        // Navigation property
+        public Movie Movie { get; set; }
+
     }
 }
