@@ -27,6 +27,9 @@ namespace MovieShopMVC.Controllers
             // Passing the data from Controller action method to View
             return View(movieCards); 
         }
+        
+
+
 
         [HttpGet]
         public IActionResult Privacy()
