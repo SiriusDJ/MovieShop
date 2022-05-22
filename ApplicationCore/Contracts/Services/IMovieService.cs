@@ -12,7 +12,7 @@ namespace ApplicationCore.Contracts.Services
         // home/index action method
         List<MovieCardModel> GetTop30GrossingMovies();
 
-        GetMovieDetails(int movieId);
+        MovieDetailsModel GetMovieDetails(int movieId);
 
     }
 }

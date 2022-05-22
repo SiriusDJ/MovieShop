@@ -6,7 +6,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore
+using Microsoft.EntityFrameworkCore;
+using ApplicationCore.Models;
 
 namespace Infrastructure.Repositories
 {
@@ -38,11 +39,13 @@ namespace Infrastructure.Repositories
             // Include method in EF will enalb us to join with related navigation 
             var movie = _dbContext.Movies.Include(m=> m.MoviesOfGenre).ThenInclude(m => m.Genre).
                 Include(m => m.MovieCasts).ThenInclude(m => m.Cast)
+                .Include(m => m.Trailers)
                 .FirstOrDefault(m => m.Id == id);
             // FirstOrDefault safest one
             // First throws ex when 0 records
             // SingleOrDefault good for 0 or 1
             // Single throw ex when no records found or when more than 1 record is found
+            return movie;
         }
 
     }
