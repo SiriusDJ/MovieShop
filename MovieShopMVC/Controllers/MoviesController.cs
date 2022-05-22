@@ -13,7 +13,7 @@ namespace MovieShopMVC.Controllers
         }
 
         [HttpGet]
-        public IActionResult Details(int id)
+        public async Task<IActionResult> Details(int id)
         {
 
             // create repositories => Data access logic
@@ -21,7 +21,12 @@ namespace MovieShopMVC.Controllers
             // Controller action methods => services methods => Repository motheods => SQL database
             // get the mode data from the services and send the data to the views (M)
 
-            var movie = _movieService.GetMovieDetails(id);
+            // CPU bound operation => Pi, loan calculator, image processing
+            // I/O bound operation => database calls, file, images, videos
+
+            // Network speed, SQL Server => Query, Server Memory can affect the speed of the following code
+            // T1(Thread 1) is just waiting
+            var movie = await _movieService.GetMovieDetails(id);
             return View(movie);
         }
     }

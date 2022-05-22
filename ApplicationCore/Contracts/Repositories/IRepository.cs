@@ -8,12 +8,12 @@ namespace ApplicationCore.Contracts.Repositories
 {
     public interface IRepository<T> where T: class
     {
-        T Get(int id);
-        IEnumerable<T> GetAll();
-        T GetById(int id);
-        T Add(T entity);
-        T Update(T entity);
-        T Delete(int id);
+        Task<T> Get(int id);
+        Task<IEnumerable<T>> GetAll();
+        Task<T> GetById(int id);
+        Task<T> Add(T entity);
+        Task<T> Update(T entity);
+        Task<T> Delete(int id);
 
     }
 }

@@ -75,3 +75,29 @@ method(5, movieService)
 1. Two ways to model our code first design
 	1. Data Annotations
 	1. Fluent API (takes precedence)
+
+Sync vs Async
+
+ASP.NET => when a request come in 
+get => http://movieshop.come/movies/details/22
+
+ASP.Net will have Threadpool => Collection of thread => 10 threads
+
+T1 T2...T10 a collection of threads
+20 requests at the same time for the same URL or different URL
+t1 to t10 to process each request
+
+11 the request => 503 error
+prevent thread starcation senario
+
+I/O =>
+async/await => go together, only await a method that returns a task
+
+write async modifier to the method
+always return a task
+
+wrapping datatypes into Task
+sync			async
+int				Task<int>
+ActionResult	Task<ActionResult>
+void			Task
