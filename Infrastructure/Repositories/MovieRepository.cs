@@ -40,7 +40,7 @@ namespace Infrastructure.Repositories
         {
             // we need to join Navigation properties
             // Include method in EF will enalb us to join with related navigation 
-            var movie = await _dbContext.Movies.Include(m=> m.MoviesOfGenre).ThenInclude(m => m.Genre).
+            var movie = await _dbContext.Movies.Include(m => m.MoviesOfGenre).ThenInclude(m => m.Genre).
                 Include(m => m.MovieCasts).ThenInclude(m => m.Cast)
                 .Include(m => m.Trailers)
                 .FirstOrDefaultAsync(m => m.Id == id);
@@ -68,12 +68,14 @@ namespace Infrastructure.Repositories
                 // list<moviegenre> to list<movie>
                 .Select(m => new Movie
                 {
-                    Id = m.MovieId, 
+                    Id = m.MovieId,
                     PosterUrl = m.Movie.PosterUrl,
                     Title = m.Movie.Title
                 })
-                .Skip((pageNumber-1) * pageSize).Take(pageSize).ToListAsync();
+                .Skip((pageNumber - 1) * pageSize).Take(pageSize).ToListAsync();
 
             var pagedMovies = new PagedResultSet<Movie>(movies, pageNumber, pageSize, totalMoviesCountByGenre);
+            return pagedMovies;
+        }
     }
 }
