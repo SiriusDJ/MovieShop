@@ -101,3 +101,26 @@ sync			async
 int				Task<int>
 ActionResult	Task<ActionResult>
 void			Task
+
+Server side Pagination
+
+you wanna get Movies by genre, but you do not wanna get all of them together
+
+UI => not good UI EXP
+Takes lots of time => SQL server needs to get all the data
+
+http://moviesop.com/movies/genre/1 => get all the movies for genre 1
+
+
+http://moviesop.com/movies/genre/1?pageSize=30&pageNumber=2
+
+Movie, MovieGenre
+
+select m.id, m.posterUrul, m.Title
+from 
+movie m join MovieGenre mg on m.id = mg.movieid
+where mg.genreId = 1
+order by m.id desc
+
+
+// 5000
