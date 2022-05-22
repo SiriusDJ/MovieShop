@@ -21,9 +21,9 @@ namespace MovieShopMVC.Controllers
 
        // Action methods
        [HttpGet]
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {    
-            var movieCards = _movieService.GetTop30GrossingMovies();
+            var movieCards = await _movieService.GetTop30GrossingMovies();
             // Passing the data from Controller action method to View
             return View(movieCards); 
         }
