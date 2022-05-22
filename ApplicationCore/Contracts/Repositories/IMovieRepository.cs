@@ -19,6 +19,6 @@ namespace ApplicationCore.Contracts.Services
         //Task<(IEnumerable<Movie>, int totalCount, int totalPages)> GetMoviesByGenres(int genreId, int pageSize = 30, int pageNumber = 1);
         // method 2: return tuple 
 
-        Task<> GetMoviesByGenres(int genreId, int pageSize = 30, int pageNumber = 1);
+        Task<PagedResultSet<Movie>> GetMoviesByGenres(int genreId, int pageSize = 30, int pageNumber = 1);
     }
 }
