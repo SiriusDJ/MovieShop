@@ -1,0 +1,149 @@
+﻿span{
+    color:white;
+}
+
+.upper{
+    height: 400px;
+}
+
+.lower{
+    width: 
+}
+img.poster {
+    margin-left:200px;
+    height: 400px;
+}
+
+h1{
+    color:white;
+}
+p{
+    color:white;
+}
+h5 {
+    color:rgba(200,200,200,0.8);
+    font-size:12px;
+    font-weight:300;
+    margin: 10px 0px;
+}
+span.runtime {
+    color: rgba(200,200,200,0.8);
+    font-weight:700;
+
+}
+span.genre {
+    border: none;
+    background-color: rgba(100,100,100,0.8);
+    color: white;
+    border-radius:10px;
+    padding: 2px 4px;
+    font-size:14px;
+    margin:4px 3px;
+    font-weight:600;
+
+}
+
+h3.avg-rating {
+    color: white;
+    font-size: 16px;
+    margin: 10px 0px;
+    background-color: green;
+    border-radius: 10px;
+    width:fit-content;
+    padding: 2px 7px;
+}
+p.overview{
+    font-size: 15px;
+}
+
+h2 {
+    margin:15px 0px;
+    font-size: 20px;
+    text-transform:uppercase;
+}
+
+li {
+    list-style-type: none;
+}
+span.movie-facts-tag {
+    color: white;
+    background-color: rgb(70,70,70);
+    border-radius:8px;
+    font-size: 9px;
+    font-weight:700;
+    padding: 2px 5px;
+}
+
+small{
+    margin:0px 3px;
+    font-size:15px;
+    font-weight: 700;
+}
+
+ul.movie-facts{
+    margin-top:10px;
+    padding-left:0px;
+}
+
+ul.movie-facts>li{
+    margin: 3px 0px 3px 10px;
+
+}
+
+
+ul.trailers{
+    margin-top:10px;
+    padding-left:0px;
+}
+
+hr{
+    color:black;
+    margin:10px 0px;
+    height:1px;
+    opacity:1;
+}
+
+ul.trailers>li{
+    margin:7px 0px 9px 10px;
+}
+
+ul.trailers > li >a{
+    color: black;
+    text-decoration: none;
+    margin-left:10px;
+}
+
+
+img.cast{
+    border-radius: 50%;
+    width: 40%;
+}
+h3.cast{
+    font-size:18px;
+    margin-top: 30px;
+}
+
+button.review{
+
+    font-weight:600;
+    text-transform:uppercase;
+    width:200px;
+    color:white;
+    background-color:none;
+    margin: 10px 0px;
+    font-size:12px;
+    
+}
+button.buy {
+    font-weight: 700;
+    text-transform: uppercase;
+    width: 200px;
+    color: black;
+    margin: 10px 0px;
+    font-size: 12px;
+}
+
+
+div.buttons{
+    margin-top:40px;
+}

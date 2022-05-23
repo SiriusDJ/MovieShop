@@ -1,0 +1,16 @@
+﻿
+.navdiv {
+    background-color: #333940;
+}
+
+a.navbar-brand{
+   color: white;
+}
+
+a.nav-link {
+    color: #86898c;
+}
+
+button.btn{
+    color: #86898c;
+}
