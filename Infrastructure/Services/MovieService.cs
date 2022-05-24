@@ -38,9 +38,11 @@ namespace Infrastructure.Services
                 RunTime = movie.RunTime,
                 BackdropUrl = movie.BackdropUrl,
                 ImdbUrl = movie.ImdbUrl,
-                TmdbUrl = movie.TmdbUrl
+                TmdbUrl = movie.TmdbUrl,
+                AverageRating = movie.MovieReview.Where(x => x.MovieId == movieId).Average(x => x.Rating)
+        };
 
-            };
+
 
             foreach (var trailer in movie.Trailers)
             {
@@ -55,8 +57,9 @@ namespace Infrastructure.Services
 
             foreach (var cast in movie.MovieCasts)
             {
-                movieDetails.Casts.Add(new CastModel { Id = cast.CastId, Name = cast.Cast.Name, Character = cast.Character, ProfilePath = cast.Cast.ProfilePath });
+                movieDetails.Casts.Add(new CastModel { Id = cast.CastId, Name = cast.Cast.Name, Character = cast.Character, ProfilePath = cast.Cast.ProfilePath, TmdbUrl=cast.Cast.TmdbUrl});
             }
+
 
             return movieDetails;
         }

@@ -43,6 +43,7 @@ namespace Infrastructure.Repositories
             var movie = await _dbContext.Movies.Include(m => m.MoviesOfGenre).ThenInclude(m => m.Genre).
                 Include(m => m.MovieCasts).ThenInclude(m => m.Cast)
                 .Include(m => m.Trailers)
+                .Include(m => m.MovieReview)
                 .FirstOrDefaultAsync(m => m.Id == id);
             // FirstOrDefault safest one
             // First throws ex when 0 records

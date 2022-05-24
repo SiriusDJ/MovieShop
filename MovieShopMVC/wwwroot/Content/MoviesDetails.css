@@ -6,9 +6,6 @@
     height: 400px;
 }
 
-.lower{
-    width: 
-}
 img.poster {
     margin-left:200px;
     height: 400px;
@@ -20,7 +17,7 @@ h1{
 p{
     color:white;
 }
-h5 {
+h5.tagline {
     color:rgba(200,200,200,0.8);
     font-size:12px;
     font-weight:300;
@@ -43,8 +40,7 @@ span.genre {
 
 }
 
-h3.avg-rating {
-    color: white;
+span.avg-rating {
     font-size: 16px;
     margin: 10px 0px;
     background-color: green;
@@ -62,8 +58,9 @@ h2 {
     text-transform:uppercase;
 }
 
-li {
+li.list-group-item {
     list-style-type: none;
+    border:none;
 }
 span.movie-facts-tag {
     color: white;
@@ -80,6 +77,13 @@ small{
     font-weight: 700;
 }
 
+div.review{
+    margin-top:20px;
+}
+
+button.btn{
+    color:white;
+}
 ul.movie-facts{
     margin-top:10px;
     padding-left:0px;
@@ -121,6 +125,7 @@ img.cast{
 h3.cast{
     font-size:18px;
     margin-top: 30px;
+    text-decoration:none;
 }
 
 button.review{
@@ -146,4 +151,12 @@ button.buy {
 
 div.buttons{
     margin-top:40px;
+}
+
+h2.cast{
+    margin-left:35px;
+}
+
+a.cast{
+    text-decoration:none;
 }
