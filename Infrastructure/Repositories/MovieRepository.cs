@@ -63,7 +63,7 @@ namespace Infrastructure.Repositories
                 throw new Exception("No Movies Found for that genre");
 
             }
-
+            
             var movies = await _dbContext.MoviesGenres.Where(g => g.GenreId == genreId).Include(m => m.Movie)
                 .OrderBy(m => m.MovieId)
                 // list<moviegenre> to list<movie>

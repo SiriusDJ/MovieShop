@@ -22,7 +22,7 @@ namespace ApplicationCore.Entities
 
         public string ProfilePath { get; set; }
 
-        public ICollection<MovieCast> CastsofMovie { get; set; }  
+        public ICollection<MovieCast> MoviesOfCast { get; set; }  
 
     }
 }
