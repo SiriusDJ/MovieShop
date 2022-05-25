@@ -9,7 +9,9 @@ namespace ApplicationCore.Models
     public class MovieModel
     {
         public int MovieId;
-        public string? Title;
-        public string? Character;
+        public string Title;
+        public string Character;
+
+        // public MovieCardModel MovieCard;
     }
 }

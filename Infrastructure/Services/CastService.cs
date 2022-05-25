@@ -27,10 +27,26 @@ namespace Infrastructure.Services
                 TmdbUrl = cast.TmdbUrl,
                 ProfilePath = cast.ProfilePath
             };
+
             
             foreach(var movieCast in cast.MoviesOfCast)
-            {   
-                castDetails.StarringMovieList.Add(new MovieModel() { MovieId = movieCast.Movie.Id, Title = movieCast.Movie.Title, Character = movieCast.Character});
+            {
+                //var movie = new MovieModel();
+                //movie.MovieId = movieCast.Movie.Id;
+                //movie.Character = movieCast.Character;
+                //movie.Title = movieCast.Movie.Title;
+
+
+                //castDetails.StarringMovieList.Add(new MovieModel { Title = "1", Character = "1", MovieId = 1});
+                //castDetails.StarringMovieList.Add(movie);
+
+                castDetails.StarringMovieList.Add(new MovieModel()
+                {
+                    MovieId = movieCast.Movie.Id,
+                    Title = movieCast.Movie.Title,
+                    Character = movieCast.Character
+                });
+                // var test = castDetails.StarringMovieList[castDetails.StarringMovieList.Count() - 1];
             }
             return castDetails;
            

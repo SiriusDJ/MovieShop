@@ -9,10 +9,15 @@ namespace ApplicationCore.Models
 {
     public class CastDetailsModel
     {
+        public CastDetailsModel()
+        {
+            StarringMovieList = new List<MovieModel>();
+        }
         public int Id { get; set; }
         public string Name { get; set; }
         public string ProfilePath { get; set; }
         public string TmdbUrl { get; set; }
+
         public List<MovieModel> StarringMovieList { get; set; }
 
     }

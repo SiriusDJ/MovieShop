@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Cryptography.KeyDerivation;
 using System.Security.Cryptography;
+using ApplicationCore.Entities;
 
 namespace Infrastructure.Services
 {
@@ -37,9 +38,35 @@ namespace Infrastructure.Services
             }
 
             // create a random salt
+
+            var salt = GetRandomSalt();
+
+
+
             // create hashed password with the salt created above
             // Never ever create your own hashing algorithms
             // some hashing algorithm: Pdbkf2 (Microsoft), Bcrypt, Aargon2
+
+            var hashedPassword = GetHashedPassword(model.Password, salt);
+
+            var user = new User
+            {
+                Email = model.Email,
+                Salt = salt,
+                HashedPassword = hashedPassword,
+                FirstName = model.FirstName,
+                LastName = model.LastName,
+                DateOfBirth = model.DateOfBirth
+
+            };
+
+            var createdUser = await _userRepository.Add(user);
+
+            if (createdUser.Id > 0)
+            {
+                return true;
+            }
+            return false;
             // save the user object to User table
 
 

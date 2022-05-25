@@ -1,22 +1,47 @@
-﻿using ApplicationCore.Models;
+﻿using ApplicationCore.Contracts.Services;
+using ApplicationCore.Exceptions;
+using ApplicationCore.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MovieShopMVC.Controllers
 {
     public class AccountController : Controller
     {
+        private readonly IAccountService _accountService;
+
+        public AccountController(IAccountService accountService)
+        {
+            _accountService = accountService;
+        }
+
         // showing the empty page
         [HttpGet]
         public IActionResult Register()
         {
             return View();
         }
+
+
+
         // when user clicks on Submit/register button
         [HttpPost]
-        public IActionResult Register(UserRegisterModel model)
+        public async Task<IActionResult> Register(UserRegisterModel model)
         {
-            return View();
+            try
+            {
+                var user = await _accountService.RegisterUser(model);
+            }
+            catch (ConflictException)
+            {
+                throw;
+                // logging the exceptions later to text  /json files
+            }
+
+            return RedirectToAction("Login");
         }
+
+
+
         [HttpPost]
 
         public IActionResult Login()
