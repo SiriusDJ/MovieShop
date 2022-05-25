@@ -160,6 +160,19 @@ Admin Functionality - Role of Admin
 ### Create Register 
 1. Create Links for Register and Login
 
-
 Model Binding (Case insensitive)
 HttpContext => it will give you all the info regarding the http context
+
+Passworkds should always be hashed with Salt
+Salt is a random generated words that is added to your password before hashing
+U1 -> abc@abc.com  (ABC123! + sfadfdafdsf)  Hash1Alg ->  saasdfasdfasdfasdfasdf
+U2 -> xyx@xyx.com  (Abc123! + sfdfsddfdfdfdf)  Hash1Alg ->  saasdfasdfasdfasdfasdf
+
+Encryption (two way)  -> Credit Cards, Secretanswwers, SSN, DL
+
+Hashing (one way) -> Passwords
+
+
+Login
+U1 -> abc@abc.com (Abc123!! + sfadfdafdsf) -> (hashed) == hash stored in database
+compare hashes
