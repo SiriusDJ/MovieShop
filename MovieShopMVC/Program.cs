@@ -1,3 +1,4 @@
+using ApplicationCore.Contracts.Repositories;
 using ApplicationCore.Contracts.Services;
 using Infrastructure.Data;
 using Infrastructure.Repositories;
@@ -13,6 +14,8 @@ builder.Services.AddControllersWithViews();
 // Registrations
 builder.Services.AddScoped<IMovieService, MovieService>();
 builder.Services.AddScoped<IMovieRepository, MovieRepository>();
+builder.Services.AddScoped<ICastService, CastService>();
+builder.Services.AddScoped<ICastRepository, CastRepository>();
 
 // oder .NET framework, we had to rely on 3rd party libraries to do DI such as Autofac, Ninject
 
@@ -48,6 +51,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Movies}/{action=Details}/{id=2}");
+    pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();

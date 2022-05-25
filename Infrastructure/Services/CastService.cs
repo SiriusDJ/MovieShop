@@ -27,9 +27,10 @@ namespace Infrastructure.Services
                 TmdbUrl = cast.TmdbUrl,
                 ProfilePath = cast.ProfilePath
             };
+            
             foreach(var movieCast in cast.MoviesOfCast)
-            {
-                castDetails.MoviesOfCast.Add(new MovieModel() { Id = movieCast.Movie.Id, character = movieCast.Character});
+            {   
+                castDetails.StarringMovieList.Add(new MovieModel() { MovieId = movieCast.Movie.Id, Title = movieCast.Movie.Title, Character = movieCast.Character});
             }
             return castDetails;
            

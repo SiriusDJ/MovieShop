@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace ApplicationCore.Models
 {
-    public class MovieModel
+    public class UserLoginModel
     {
-        public int MovieId;
-        public string? Title;
-        public string? Character;
+        public string Email { get; set; }
+        public string Password { get; set; }
     }
 }

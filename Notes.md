@@ -135,3 +135,31 @@ order by m.id desc
     <li class="page-item"><a class="page-link" href="#">Next</a></li>
   </ul>
 </nav>
+
+Authentication & Authorization
+public pages/annonymous user
+1. Home
+1. Movie Details
+1. Cast Details
+1. Login Page
+1. Register Page
+
+
+User Functionality
+1. Buy Movie
+1. Favorite Movie
+1. Review Movie
+1. Get Movies Purchased by user
+1. Get Movies Favorited by user
+
+Admin Functionality - Role of Admin
+1. Create Movie
+1. Create Cast
+1. Get Popular Movies from and to dates -> Report data
+
+### Create Register 
+1. Create Links for Register and Login
+
+
+Model Binding (Case insensitive)
+HttpContext => it will give you all the info regarding the http context

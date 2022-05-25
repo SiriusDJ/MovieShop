@@ -42,7 +42,7 @@ namespace Infrastructure.Services
                 AverageRating = movie.MovieReview.Where(x => x.MovieId == movieId).Average(x => x.Rating)
         };
 
-
+            
 
             foreach (var trailer in movie.Trailers)
             {
@@ -68,12 +68,21 @@ namespace Infrastructure.Services
         {
             var pagedMovies = await _movieRepository.GetMoviesByGenres(genreId, pageSize, pageNumber);
             var pagedMovieCards = new List<MovieCardModel>();
-            pagedMovieCards.AddRange(pagedMovies.Data.Select(m => new MovieCardModel
+/*            pagedMovieCards.AddRange(pagedMovies.Data.Select(m => new MovieCardModel
             {
                 Id = m.Id,
                 PosterUrl = m.PosterUrl,
                 Title = m.Title
-            }));
+            }));*/
+            foreach(var card in pagedMovies.Data)
+            {
+                pagedMovieCards.Add(new MovieCardModel
+                {
+                    Id = card.Id,
+                    PosterUrl = card.PosterUrl,
+                    Title = card.Title
+                });
+            }
             
             return new PagedResultSet<MovieCardModel>(pagedMovieCards, pageNumber, pageSize, pagedMovies.Count);
         }

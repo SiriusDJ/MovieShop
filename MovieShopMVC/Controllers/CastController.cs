@@ -18,9 +18,8 @@ namespace MovieShopMVC.Controllers
         [HttpGet]
         public async Task<IActionResult> Details(int id)
         {
-            var casts = _castService.GetCastDetails(id);
+            var casts = await _castService.GetCastDetails(id);
             return View(casts);
-
         }
     }
 }

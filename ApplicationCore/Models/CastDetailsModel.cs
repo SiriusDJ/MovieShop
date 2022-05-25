@@ -13,7 +13,7 @@ namespace ApplicationCore.Models
         public string Name { get; set; }
         public string ProfilePath { get; set; }
         public string TmdbUrl { get; set; }
-        public List<MovieModel> MoviesOfCast { get; set; }
+        public List<MovieModel> StarringMovieList { get; set; }
 
     }
 }

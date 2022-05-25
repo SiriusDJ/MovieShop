@@ -1,3 +1,13 @@
 ﻿@model ApplicationCore.Models.CastDetailsModel;
 
-<h1></h1>
+<h1>
+    @Model.Name
+</h1>
+@foreach(var movie in Model.StarringMovieList)
+{
+    <div>
+        <span>@movie.Title</span>
+        <span>@movie.Character</span>
+    </div>
+    
+}
