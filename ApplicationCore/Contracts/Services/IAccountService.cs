@@ -10,7 +10,6 @@ namespace ApplicationCore.Contracts.Services
     public interface IAccountService
     {
         Task<bool> RegisterUser(UserRegisterModel model);
-
         Task<UserLoginResponseModel> LoginUser(string email, string password);
     }
 }

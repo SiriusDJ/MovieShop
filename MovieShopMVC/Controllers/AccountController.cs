@@ -64,6 +64,8 @@ namespace MovieShopMVC.Controllers
             // Cookie based authentication
             // 1:00 PM => user/purchases, redirect to the login page
 
+
+
             try
             {
                 var user = await _accountService.LoginUser(model.Email, model.Password);

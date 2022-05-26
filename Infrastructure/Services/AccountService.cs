@@ -30,20 +30,23 @@ namespace Infrastructure.Services
             {
                 throw new Exception("Email does not exist");
             }
-            var hashedPassword = GetHashedPassword(passowrd, dbuUser.Salt);
+            // Validate the password
+            var hashedPassword = GetHashedPassword(password, dbUser.Salt);
             if (hashedPassword == dbUser.HashedPassword)
             {
                 // password is good
+
                 var userLoginResponseModel = new UserLoginResponseModel()
                 {
                     Id = dbUser.Id,
                     Email = dbUser.Email,
                     FirstName = dbUser.FirstName,
-                    LastName = dbUser.LastName
+                    LastName = dbUser.LastName,
+                    DateOfBirth = dbUser.DateOfBirth.GetValueOrDefault()
                 };
 
             }
-            return null;
+            throw new Exception("email/password does not match")
 
         }
 
@@ -91,6 +94,7 @@ namespace Infrastructure.Services
 
 
         }
+        
 
         private string GetRandomSalt()
         {
@@ -113,5 +117,6 @@ namespace Infrastructure.Services
             256 / 8));
             return hashed;
         }
+
     }
 }
