@@ -44,14 +44,17 @@ namespace Infrastructure.Services
                     LastName = dbUser.LastName,
                     DateOfBirth = dbUser.DateOfBirth.GetValueOrDefault()
                 };
-
+                return userLoginResponseModel;
             }
-            throw new Exception("email/password does not match")
+
+            throw new Exception("email/password does not match");
 
         }
 
         public async Task<bool> RegisterUser(UserRegisterModel model)
         {
+
+
             // go todatabase and check if the email exists already
             var dbUser = await _userRepository.GetUserByEmail(model.Email);
             if (dbUser != null)

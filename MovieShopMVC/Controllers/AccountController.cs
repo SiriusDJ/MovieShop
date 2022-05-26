@@ -30,6 +30,12 @@ namespace MovieShopMVC.Controllers
         [HttpPost]
         public async Task<IActionResult> Register(UserRegisterModel model)
         {
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+
+
             try
             {
                 var user = await _accountService.RegisterUser(model);
@@ -77,8 +83,8 @@ namespace MovieShopMVC.Controllers
                 var claims = new List<Claim>()
                 {
                     new Claim(ClaimTypes.Email, user.Email),
-                    new Claim(ClaimTypes.GivenName, user.FirstName),
-                    new Claim(ClaimTypes.Surname, user.LastName),
+                    new Claim(ClaimTypes.GivenName, user.LastName),
+                    new Claim(ClaimTypes.Surname, user.FirstName),
                     new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
                     new Claim(ClaimTypes.DateOfBirth, user.DateOfBirth.ToShortDateString()),
                     new Claim("Language","English")
@@ -109,6 +115,12 @@ namespace MovieShopMVC.Controllers
             return View();
         }
 
+        public async Task<IActionResult> Logout()
+        {
+            await HttpContext.SignOutAsync();
+            return RedirectToAction("Login");
+        }
+        
     }
 
 }

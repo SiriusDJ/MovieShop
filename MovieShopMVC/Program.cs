@@ -5,6 +5,7 @@ using Infrastructure.Repositories;
 using Infrastructure.Services;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
+using MovieShopMVC.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,6 +20,9 @@ builder.Services.AddScoped<ICastService, CastService>();
 builder.Services.AddScoped<ICastRepository, CastRepository>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IAccountService, AccountService>();
+builder.Services.AddScoped<ICurrentUser, CurrentUser>();
+// inject HttpContext inside regular class
+builder.Services.AddHttpContextAccessor();
 
 // oder .NET framework, we had to rely on 3rd party libraries to do DI such as Autofac, Ninject
 
@@ -39,6 +43,8 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
        options.LoginPath = "/account/login";
    });
 
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -49,16 +55,19 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
+
+// Middleware in ASP.NET
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
-
-
+                         
+// Authentication before Authorization in middleware
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Cast}/{action=Details}/{id=1}");
+    pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();
