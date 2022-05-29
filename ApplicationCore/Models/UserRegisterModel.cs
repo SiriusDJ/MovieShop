@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ApplicationCore.Validators;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -34,6 +35,7 @@ namespace ApplicationCore.Models
         [DataType(DataType.Date)]
         // Minimum year and Max Year that a person can enter
         // Custom Validator
+        [YearValidation(1900)]
         public DateTime DateOfBirth { get; set; }
     }
 }

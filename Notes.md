@@ -176,3 +176,65 @@ Hashing (one way) -> Passwords
 Login
 U1 -> abc@abc.com (Abc123!! + sfadfdafdsf) -> (hashed) == hash stored in database
 compare hashes
+
+// 9
+
+Dev OPS
+
+Developer + Operations 
+
+Deploy the application => ASP.NET Core
+
+Comapny A
+Team MovieShop
+
+Environments 
+Dev -> Developer have access/test
+QA -> Testers will test
+Staging -> UAT()
+Production/Live -> Actual Users
+
+
+Windows Machine/server => IIS
+Linus Server -> Ngix
+
+Data Centers => Operations team that wll manage those servers
+
+Cloud Providers
+Azure => 
+
+IaaS -> Infrastructure as a Service VM => Windows Server with 128G RAM core
+
+IIS => MovieShop App
+
+PaaS -> Platform as a Service
+Azure App Service => Deploy the App
+Azure SQL
+Azure Blob Storage
+Azure CI/CD
+Azure Functions
+Azure Cognitive Services
+
+Saas -> 
+
+//10 API
+
+API => so that other teams/languages can understand that API
+HTTP Protocal
+JSON Data
+
+2 Catagories of API
+old school Web services -> SOAP Protocol
+REST API -> Architecture pattern, HTTP HTTP GET, PUT, POST, DELETE 
+HTTP Status Codes
+
+URL => 
+
+GET http://movieshop.com/api/movies/2
+POST http://movieshop.com/api/account/register
+
+Documentation => Swagger Documentation
+
+1 Mobile APP
+    iOS -> iOS Team Swift
+    Antroid -> Team Java

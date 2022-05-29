@@ -33,16 +33,16 @@ namespace Infrastructure.Services
                 PosterUrl = movie.PosterUrl,
                 Revenue = movie.Revenue,
                 ReleaseDate = movie.ReleaseDate,
-                Tagline= movie.Tagline,
+                Tagline = movie.Tagline,
                 Title = movie.Title,
                 RunTime = movie.RunTime,
                 BackdropUrl = movie.BackdropUrl,
                 ImdbUrl = movie.ImdbUrl,
                 TmdbUrl = movie.TmdbUrl,
                 AverageRating = movie.MovieReview.Where(x => x.MovieId == movieId).Average(x => x.Rating)
-        };
+            };
 
-            
+
 
             foreach (var trailer in movie.Trailers)
             {
@@ -57,7 +57,7 @@ namespace Infrastructure.Services
 
             foreach (var cast in movie.MovieCasts)
             {
-                movieDetails.Casts.Add(new CastModel { Id = cast.CastId, Name = cast.Cast.Name, Character = cast.Character, ProfilePath = cast.Cast.ProfilePath, TmdbUrl=cast.Cast.TmdbUrl});
+                movieDetails.Casts.Add(new CastModel { Id = cast.CastId, Name = cast.Cast.Name, Character = cast.Character, ProfilePath = cast.Cast.ProfilePath, TmdbUrl = cast.Cast.TmdbUrl });
             }
 
 
@@ -68,13 +68,7 @@ namespace Infrastructure.Services
         {
             var pagedMovies = await _movieRepository.GetMoviesByGenres(genreId, pageSize, pageNumber);
             var pagedMovieCards = new List<MovieCardModel>();
-/*            pagedMovieCards.AddRange(pagedMovies.Data.Select(m => new MovieCardModel
-            {
-                Id = m.Id,
-                PosterUrl = m.PosterUrl,
-                Title = m.Title
-            }));*/
-            foreach(var card in pagedMovies.Data)
+            foreach (var card in pagedMovies.Data)
             {
                 pagedMovieCards.Add(new MovieCardModel
                 {
@@ -83,7 +77,7 @@ namespace Infrastructure.Services
                     Title = card.Title
                 });
             }
-            
+
             return new PagedResultSet<MovieCardModel>(pagedMovieCards, pageNumber, pageSize, pagedMovies.Count);
         }
 
@@ -91,7 +85,7 @@ namespace Infrastructure.Services
         {
             var movies = await _movieRepository.GetTop30GrossingMovies();
             var movieCards = new List<MovieCardModel>();
-            foreach(var movie in movies)
+            foreach (var movie in movies)
             {
                 movieCards.Add(new MovieCardModel
                 {
@@ -101,8 +95,9 @@ namespace Infrastructure.Services
                 });
             }
 
-            return movieCards; 
+            return movieCards;
         }
+
 
     }
 }

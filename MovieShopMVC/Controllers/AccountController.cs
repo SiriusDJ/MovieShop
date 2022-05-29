@@ -1,4 +1,5 @@
-﻿using ApplicationCore.Contracts.Services;
+﻿
+using ApplicationCore.Contracts.Services;
 using ApplicationCore.Exceptions;
 using ApplicationCore.Models;
 using Microsoft.AspNetCore.Authentication;
