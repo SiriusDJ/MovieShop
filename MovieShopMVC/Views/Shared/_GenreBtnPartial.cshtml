@@ -1,0 +1,14 @@
+﻿@inject IGenreService genreService;
+@using ApplicationCore.Contracts.Services;
+
+
+<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+GENRES
+</a>
+<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+    @foreach(var genreModel in await genreService.GetGenreList())
+    {
+        <li>
+            <a class="genres" asp-controller="Movies" asp-action = "Genres" asp-route-id = "@genreModel.Id">@genreModel.Name</a>
+        </li>
+    }

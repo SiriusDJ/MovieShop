@@ -20,7 +20,7 @@ namespace Infrastructure.Repositories
         public async Task<List<Movie>> GetTop30GrossingMovies()
         {
             // SQL database
-            // data access logic
+            // data access logic 
             // 1. ADO.NET (Microsoft) SQLConnection, SQLCommand
             // 2. Dapper (ORM) -> StackOverflow
             // 3. Entity Framework Core => LINQ
