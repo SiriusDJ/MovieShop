@@ -24,8 +24,7 @@ namespace ApplicationCore.Models
         public string LastName { get; set; }
 
         [Required(ErrorMessage = "Password cannot be empty")]
-        [RegularExpression("^(?.*[a-z])(?=.*[A-Z])(?=.*[#$^+=!*()@%&]).{8,$", ErrorMessage = 
-            "Passowrd should have minimum 8 with at least on upper, lower, number and special character")]
+        [RegularExpression(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z]).{8,15}$", ErrorMessage = "Passowrd should have minimum 8 with at least on upper, lower, number and special character")]
         // minimum of 8 character
         // 1 number, 1 uppercase, 1 lower case
         // strong password
