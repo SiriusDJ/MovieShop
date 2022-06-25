@@ -23,7 +23,10 @@ namespace Infrastructure.Services
 
         public async Task<MovieDetailsModel> GetMovieDetails(int movieId)
         {
+            
             var movie = await _movieRepository.GetById(movieId);
+
+
             var movieDetails = new MovieDetailsModel()
             {
                 Id = movie.Id,
@@ -39,10 +42,16 @@ namespace Infrastructure.Services
                 BackdropUrl = movie.BackdropUrl,
                 ImdbUrl = movie.ImdbUrl,
                 TmdbUrl = movie.TmdbUrl,
-                AverageRating = movie.MovieReview.Where(x => x.MovieId == movieId).Average(x => x.Rating)
+                
             };
-
-
+            if(movie.MovieReview.Count != 0)
+            {
+                movieDetails.AverageRating = movie.MovieReview.Average(x => x.Rating);
+            }
+            else
+            {
+                movieDetails.AverageRating = 0;
+            }
 
             foreach (var trailer in movie.Trailers)
             {
@@ -59,7 +68,6 @@ namespace Infrastructure.Services
             {
                 movieDetails.Casts.Add(new CastModel { Id = cast.CastId, Name = cast.Cast.Name, Character = cast.Character, ProfilePath = cast.Cast.ProfilePath, TmdbUrl = cast.Cast.TmdbUrl });
             }
-
 
             return movieDetails;
         }

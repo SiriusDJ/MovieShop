@@ -13,6 +13,28 @@
     </div>
 </div>
 
+@*Display previous and Next Buttons
+When you on the first page Previous button should be disabled
+When you on the last page next button should be disabled*@
+
+@{
+    var previousDisabled = !Model.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+}
+
+<a class = "btn btn-primary @previousDisabled" asp-action= "Genres" asp-controller = "Movies" asp-route-pageNumber = "@(Model.PageIndex - 1)">
+    Previous
+</a>
+<a class = "btn btn-primary @nextDisabled" asp-action= "Genres" asp-controller = "Movies" asp-route-pageNumber = "@(Model.PageIndex + 1)">
+    Next
+</a>
+
+
+
+@*Display all the page numbers 1000 records 1000/30 => 34 pages 1 2 3 .... 34
+When you are on first Page then disable First Page, when on the last page disable last 34 page button*@
+
+
 <nav aria-label="Page navigation example">
   <ul class="pagination">
 

@@ -44,7 +44,6 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
        options.Cookie.Name = "MovieShopAuthCookie";
        options.ExpireTimeSpan = TimeSpan.FromHours(2);
        options.LoginPath = "/account/login";
-       options.SlidingExpiration = true;
    });
 
 
@@ -67,15 +66,12 @@ app.UseStaticFiles();
 app.UseRouting();
 
 
-
-// Configure cookie Policy
-
 var cookiePolicyOptions = new CookiePolicyOptions
-{
-    MinimumSameSitePolicy = SameSiteMode.Strict,
-    HttpOnly = Microsoft.AspNetCore.CookiePolicy.HttpOnlyPolicy.Always,
-    Secure = CookieSecurePolicy.None,
-};
+    {
+        MinimumSameSitePolicy = SameSiteMode.Strict,
+        HttpOnly = Microsoft.AspNetCore.CookiePolicy.HttpOnlyPolicy.Always,
+        Secure = CookieSecurePolicy.None,
+    };
 
 app.UseCookiePolicy(cookiePolicyOptions);
 // Authentication before Authorization in middleware
