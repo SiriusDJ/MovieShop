@@ -18,9 +18,6 @@ namespace ApplicationCore.Entities
 
         [Required]
         public Guid PurchaseNumber { get; set; }
-
-
-
         public decimal TotalPrice { get; set; }
         public DateTime PurchaseDateTime { get; set; }
 

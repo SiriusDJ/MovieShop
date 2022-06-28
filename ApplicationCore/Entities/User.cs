@@ -39,13 +39,13 @@ namespace ApplicationCore.Entities
 
         public int? AccessFailedCount { get; set; }
 
-        public ICollection<Review> UsersOfReview { get; set; }
+        public ICollection<Review> ReviewsOfUser { get; set; }
 
-        public ICollection<Purchase> UsersOfPurchase { get; set; }
+        public ICollection<Purchase> PurchasesOfUser { get; set; }
 
         public ICollection<Favorite> MoviesOfFavorite { get; set; }
 
-        public ICollection<UserRole> UsersOfRole { get; set; }
+        public ICollection<UserRole> RolesOfUser { get; set; }
 
 
 

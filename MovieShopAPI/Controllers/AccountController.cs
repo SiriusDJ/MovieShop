@@ -14,10 +14,12 @@ namespace MovieShopAPI.Controllers
     public class AccountController : ControllerBase
     {
         private readonly IAccountService _accountService;
+        public readonly IConfiguration _configuration;
 
-        public AccountController(IAccountService accountService)
+        public AccountController(IAccountService accountService, IConfiguration configuration)
         {
             _accountService = accountService;
+            _configuration = configuration;
         }
         [HttpPost]
         [Route("login")]
@@ -25,6 +27,7 @@ namespace MovieShopAPI.Controllers
         {
             var user = await _accountService.LoginUser(model.Email, model.Password);
 
+            
             // return a token..
             // JWT Json Web Token
             // iOS, Android app or Web App (Angular or React)
@@ -43,7 +46,7 @@ namespace MovieShopAPI.Controllers
 
         [HttpPost]
         [Route("register")]
-        public async Task<IActionResult> Register(UserRegisterModel model)
+        public async Task<IActionResult> Register( [FromBody] UserRegisterModel model)
         {
             var user = _accountService.RegisterUser(model);
             return Ok(user);
@@ -60,6 +63,7 @@ namespace MovieShopAPI.Controllers
                 new Claim(JwtRegisteredClaimNames.GivenName, user.LastName),
                 new Claim(JwtRegisteredClaimNames.FamilyName, user.FirstName),
                 new Claim(JwtRegisteredClaimNames.NameId, user.Id.ToString()),
+                new Claim("Country","USA"),
                 new Claim("Language", "English")
 
             };
@@ -68,7 +72,7 @@ namespace MovieShopAPI.Controllers
             identityClaims.AddClaims(claims);
 
             // specify the secret KEY
-            var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("MyTopSecretKeyasdvasdxhcvxcvzxcvasdfasdzxcvasdfx"));
+            var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["secretKey"]));
 
             // specify the algorithm
             var credentials = new SigningCredentials(secretKey, SecurityAlgorithms.HmacSha256);
@@ -76,7 +80,7 @@ namespace MovieShopAPI.Controllers
             // how long the token is valid
             var tokenExpiration = DateTime.UtcNow.AddHours(2);
 
-            var tokenHandler = new JwtSecurityTokenHandler();
+            
 
             // create an object for above details for the token
 
@@ -86,11 +90,11 @@ namespace MovieShopAPI.Controllers
                 Expires = tokenExpiration,
                 SigningCredentials = credentials,
                 Issuer = "MovieShop, Inc",
-                Audience = "MovieShop Users"
+                Audience = "MovieShop Clients"
             };
 
+            var tokenHandler = new JwtSecurityTokenHandler();
             var encodedJwt = tokenHandler.CreateToken(tokenDetails);
-
             return tokenHandler.WriteToken(encodedJwt);
 
         }

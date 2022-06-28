@@ -1,0 +1,71 @@
+﻿
+@*Review Button*@
+<button type = "button" class="btn btn-outline-light review" data-bs-toggle="modal" data-bs-target="#writeReviewModal">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+        <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+        <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+    </svg>
+    Review
+    </button>
+
+@*Review Modal*@
+<div class="modal fade" id="writeReviewModal"" tabindex="-1" aria-labelledby="writeReviewModal" aria-hidden="true">
+    <div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+        <h5 class="modal-title" id="writeReviewModal">Please select your rating</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body text-start">
+        <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+            Dropdown button
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+            <li>8</li>
+            <li>9</li>
+            <li>10</li>
+            </ul>
+        </div>
+        <div class="input-group review">
+            <textarea class="form-control" placeholder="Write your review here"></textarea>
+        </div>
+        </div>
+        <div class="modal-footer">
+        <button type="button close" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button save-changes" class="btn btn-primary">Submit</button>
+        </div>
+    </div>
+    </div>
+</div>
+
+@*Buy Button*@
+<button type = "button" class="btn buy btn-light" review" data-bs-toggle="modal" data-bs-target="#buyModal">
+    Buy<span>$@Model.Price</span>
+</button>
+
+@*Buy Modal*@
+<div class="modal fade" id="buyModal" tabindex="-1" aria-labelledby="buyModal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="writeReviewModal">Warning</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-start">
+                Please confirm you purchase 
+            </div>
+            <div class="modal-footer">
+                <button type="button close" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button save-changes" class="btn btn-primary">Buy for $@Model.Price</button>
+            </div>
+        </div>
+    </div>
+</div>

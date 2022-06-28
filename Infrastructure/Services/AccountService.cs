@@ -51,6 +51,7 @@ namespace Infrastructure.Services
 
         }
 
+
         public async Task<bool> RegisterUser(UserRegisterModel model)
         {
 

@@ -1,7 +1,9 @@
 ﻿@model ApplicationCore.Models.MovieCardModel
 
-<div class="card mb-4">
+<div class="card mb-4 hover-overlay">
     <a asp-controller ="Movies" asp-action="Details" asp-route-id="@Model.Id">
         <img src ="@Model.PosterUrl" class="img-fluid" alt="@Model.Title">
+            <div class="mask" style="background: rgba(251, 251, 251, 0.35)">
+            </div>
     </a>
 </div>

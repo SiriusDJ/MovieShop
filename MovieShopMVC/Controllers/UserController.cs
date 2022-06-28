@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using ApplicationCore.Contracts.Services;
+using ApplicationCore.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 
@@ -7,10 +9,26 @@ namespace MovieShopMVC.Controllers
     [Authorize]
     public class UserController : Controller
     {
+        private readonly IUserService _userService;
+        public UserController(IUserService userService)
+        {
+            _userService = userService;
+        }
+        public async Task<IActionResult> Buy(PurchaseRequestModel purchaseRequest)
+        {
+            var userId = Convert.ToInt32(HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value);
+            if (!await _userService.IsMoviePurchased(purchaseRequest, userId)) 
+            {
+                return View();
+            }
+            return View();
+        }
+
+
+
+
         //show all the movies purchased by currently logged in user
-
         [HttpGet]
-
         public async Task<IActionResult> Purchases()
         {
             // first whether user is logged in 
@@ -33,10 +51,10 @@ namespace MovieShopMVC.Controllers
             // send it to database
 
             // Filters in ASP.NET
-            var userId = Convert.ToInt32(this.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value);
+            var userId = Convert.ToInt32(HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value);
             // call the UserService -> GetMoviesPurchasedByUser(int userId) -> Purchased Movies
 
-            //var data = this.HttpContext.Request.Cookies["MovieShopAuthcookie"];
+            // var data = this.HttpContext.Request.Cookies["MovieShopAuthcookie"];
             // decrypt the cookie and get hte userid from claims and expiration time from the cookie
             // use the userid to go to database and get the movies purchased
 
@@ -46,14 +64,17 @@ namespace MovieShopMVC.Controllers
         [HttpGet]
         public async Task<IActionResult> Favorites()
         {
-            var userId = Convert.ToInt32(this.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value);
+            var userId = Convert.ToInt32(HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value);
             return View();
         }
 
         public async Task<IActionResult> Reviews()
         {
-            var userId = Convert.ToInt32(this.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value);
+            var userId = Convert.ToInt32(HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value);
             return View();
         }
+
+
+
     }
 }

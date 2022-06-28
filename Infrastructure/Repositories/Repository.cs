@@ -28,7 +28,7 @@ namespace Infrastructure.Repositories
             throw new NotImplementedException();
         }
 
-        public async Task<T> Get(int id)
+        public async virtual Task<T> Get(int id)
         {
             throw new NotImplementedException();
         }
