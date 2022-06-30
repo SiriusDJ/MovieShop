@@ -70,7 +70,7 @@ namespace MovieShopMVC.Controllers
 
         public async Task<IActionResult> Reviews()
         {
-            var userId = Convert.ToInt32(HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value);
+            var userId =Convert.ToInt32(HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value);
             return View();
         }
 

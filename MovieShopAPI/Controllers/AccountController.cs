@@ -14,7 +14,7 @@ namespace MovieShopAPI.Controllers
     public class AccountController : ControllerBase
     {
         private readonly IAccountService _accountService;
-        public readonly IConfiguration _configuration;
+        private readonly IConfiguration _configuration;
 
         public AccountController(IAccountService accountService, IConfiguration configuration)
         {
@@ -26,8 +26,13 @@ namespace MovieShopAPI.Controllers
         public async Task<IActionResult> Login(UserLoginModel model)
         {
             var user = await _accountService.LoginUser(model.Email, model.Password);
+            if (user != null)
+            {
+                var jwtToken = GenerateJwtToken(user);
+                return Ok(new { token = jwtToken });
 
-            
+            }
+
             // return a token..
             // JWT Json Web Token
             // iOS, Android app or Web App (Angular or React)
@@ -39,9 +44,8 @@ namespace MovieShopAPI.Controllers
             // send the token in the http header
             // API will validate that token and then send the data back
             // authorize
-            var jwtToken = GenerateJwtToken(user);
-            
-            return Ok(new {token = jwtToken});
+
+            throw new UnauthorizedAccessException("Please check email and password");
         }
 
         [HttpPost]
